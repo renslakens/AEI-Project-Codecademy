@@ -1,5 +1,5 @@
 # AEI-Project-Codecademy
 
 ## Samenstelling van ons groepje
-###Junhao
-###Rens
+- Junhao
+- Rens
