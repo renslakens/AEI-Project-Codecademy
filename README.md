@@ -3,3 +3,4 @@
 ## Samenstelling van ons groepje
 - Junhao
 - Rens
+- Niek
