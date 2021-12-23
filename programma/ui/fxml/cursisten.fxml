@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programma.ui.CursistenController">
+   <children>
+      <TableView fx:id="cursistTableView" layoutX="62.0" layoutY="98.0" prefHeight="502.0" prefWidth="1020.0">
+        <columns>
+          <TableColumn fx:id="cursistEmailColumn" prefWidth="178.6666145324707" text="CursistEmail" />
+          <TableColumn fx:id="naamColumn" prefWidth="231.73324584960938" text="Naam" />
+            <TableColumn fx:id="geboortedatumColumn" prefWidth="129.86669921875" text="Geboortedatum" />
+            <TableColumn fx:id="adresColumn" prefWidth="208.26666259765625" text="Adres" />
+            <TableColumn fx:id="stadColumn" prefWidth="151.7333984375" text="Stad" />
+            <TableColumn fx:id="landColumn" prefWidth="123.7332763671875" text="Land" />
+            <TableColumn fx:id="postcodeColumn" prefWidth="123.7332763671875" text="Postcode" />
+            <TableColumn fx:id="geslachtColumn" prefWidth="123.7332763671875" text="Geslacht" />
+        </columns>
+      </TableView>
+      <Label layoutX="74.0" layoutY="70.0" text="Zoek Cursist" />
+      <TextField fx:id="zoekCursist" layoutX="162.0" layoutY="65.0" promptText="Naam..." />
+      <ButtonBar layoutX="311.0" layoutY="58.0" prefHeight="40.0" prefWidth="79.0">
+        <buttons>
+          <Button fx:id="btnCursist" mnemonicParsing="false" onAction="#handleBtn" text="+ Cursist" />
+        </buttons>
+      </ButtonBar>
+   </children>
+</Pane>
