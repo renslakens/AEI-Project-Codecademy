@@ -13,6 +13,7 @@ public class Cursist {
     private String stad;
     private String land;
     private String postcode;
+    private int cursistID;
     // constructor
     public Cursist(String Email, String name, Date geboorteDatum, String geslacht, String adres, String stad, String land, String postcode) {
         this.Email = Email;
@@ -23,8 +24,16 @@ public class Cursist {
         this.stad = stad;
         this.land = land;
         this.postcode = postcode;
+        this.cursistID = 0;
     }
 
+    public int getCursistID() {
+        return cursistID;
+    }
+
+    public void setCursistID(int cursistID) {
+        this.cursistID = cursistID;
+    }
 
     // getters and setters
     public String getEmail() {

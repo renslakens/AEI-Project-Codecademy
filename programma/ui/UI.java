@@ -17,9 +17,10 @@ import java.io.IOException;
 public class UI extends Application{
       @Override
       public void start(Stage window) throws IOException {
-          Parent root = FXMLLoader.load(getClass().getResource("fxml/cursisten.fxml"));
+          Parent root = FXMLLoader.load(getClass().getResource("fxml/navbar.fxml"));
             window.setTitle("Codeacademy");
-          window.setScene((new Scene(root,1080,600)));
+          window.setScene((new Scene(root,1370,600)));
+          window.setResizable(false);
           window.show();
       }
 
