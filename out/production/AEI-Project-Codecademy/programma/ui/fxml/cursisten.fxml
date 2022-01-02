@@ -50,6 +50,16 @@
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="14.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/refresh.png" />
+                     </image>
+                     <effect>
+                        <ColorAdjust brightness="1.0" contrast="1.0" hue="1.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
             </Button>
             <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#handleDeleteBtn" prefHeight="22.0" prefWidth="87.0" styleClass="button6" stylesheets="@../../css/style.css" text="Delete" textFill="WHITE">
                <graphic>
