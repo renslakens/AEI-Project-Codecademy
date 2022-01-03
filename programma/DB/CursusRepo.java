@@ -1,13 +1,8 @@
 package programma.DB;
 
-import java.sql.Date;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
-import javafx.collections.ObservableList;
-import programma.DB.Crud;
 import programma.domain.Cursus;
 
 public class CursusRepo {
@@ -41,7 +36,7 @@ public class CursusRepo {
                 cursus.setOnderwerp(rs.getString("onderwerp"));
                 cursus.setIntroductieTekst(rs.getString("introductieTekst"));
                 cursus.setNiveau(rs.getString("niveau"));
-                cursus.setInterestingCursus(); // Geen rs.getArrayList ?
+                cursus.setInterestingCursus(/* Loop gebruiken?*/); // Geen rs.getArrayList ?
                 cursusList.add(cursus);
             }
 
@@ -64,7 +59,7 @@ public class CursusRepo {
                 cursus.setOnderwerp(rs.getString("onderwerp"));
                 cursus.setIntroductieTekst(rs.getString("introductieTekst"));
                 cursus.setNiveau(rs.getString("niveau"));
-                cursus.setInterestingCursus(); // Geen rs.getArrayList ?
+                cursus.setInterestingCursus(/* Loop gebruiken?*/); // Geen rs.getArrayList ?
             }
 
         } catch (Exception e) {
