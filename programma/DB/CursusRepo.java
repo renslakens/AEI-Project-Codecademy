@@ -35,7 +35,7 @@ public class CursusRepo {
         try {
             while (rs.next()) {
 
-                Cursus cursus = new Cursus(null,null,null,null,null,null);
+                Cursus cursus = new Cursus(0,null,null,null,null,null);
                 cursus.setVolgnummer(rs.getInt("Volgnummer"));
                 cursus.setCursusNaam(rs.getString("cursusNaam"));
                 cursus.setOnderwerp(rs.getString("onderwerp"));
@@ -54,7 +54,7 @@ public class CursusRepo {
     public Cursus getCursus(int id) {
         ResultSet rs = DatabaseConnection
                 .execute(String.format("SELECT * FROM Cursus WHERE CursusID = %d",id));
-        Cursus cursus = new Cursus(null,null,null,null,null,null);
+        Cursus cursus = new Cursus(0,null,null,null,null,null);
 
         try {
             while (rs.next()) {
