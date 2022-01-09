@@ -3,16 +3,11 @@ package programma.logic;
 //import domain;
 
 import java.security.PublicKey;
-
-
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
-
 import java.text.ParseException;
 
 public class Validatie {
-
 
     public boolean validatieUrl(String Url){
         boolean valid;
@@ -54,8 +49,5 @@ public class Validatie {
             return false;
         }
     }
-
-
-
 
 }
