@@ -36,7 +36,7 @@ public class CursusRepo {
                 cursus.setOnderwerp(rs.getString("onderwerp"));
                 cursus.setIntroductieTekst(rs.getString("introductieTekst"));
                 cursus.setNiveau(rs.getString("niveau"));
-                cursus.setInterestingCursus(/* Loop gebruiken?*/); // Geen rs.getArrayList ?
+                cursus.setInterestingCursus(new ArrayList<>()/* Loop gebruiken?*/); // Geen rs.getArrayList ?
                 cursusList.add(cursus);
             }
 
@@ -59,7 +59,7 @@ public class CursusRepo {
                 cursus.setOnderwerp(rs.getString("onderwerp"));
                 cursus.setIntroductieTekst(rs.getString("introductieTekst"));
                 cursus.setNiveau(rs.getString("niveau"));
-                cursus.setInterestingCursus(/* Loop gebruiken?*/); // Geen rs.getArrayList ?
+                cursus.setInterestingCursus(new ArrayList<>()/* Loop gebruiken?*/); // Geen rs.getArrayList ?
             }
 
         } catch (Exception e) {
