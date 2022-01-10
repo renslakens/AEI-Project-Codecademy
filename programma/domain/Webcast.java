@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class Webcast {
     // Attributes
-    private String titel;
     private String beschrijving;
     private String sprekerNaam;
     private String organisatieNaam;
@@ -13,8 +12,7 @@ public class Webcast {
     private String url;
 
     // Constructor
-    public Webcast(String titel, String beschrijving, String sprekerNaam, String organisatieNaam, int tijdsduur, Date publicatieDatum, String url) {
-        this.titel = titel;
+    public Webcast(String beschrijving, String sprekerNaam, String organisatieNaam, int tijdsduur, Date publicatieDatum, String url) {
         this.beschrijving = beschrijving;
         this.sprekerNaam = sprekerNaam;
         this.organisatieNaam = organisatieNaam;
@@ -24,14 +22,6 @@ public class Webcast {
     }
 
     // Getters and Setters
-    public String getTitel() {
-        return titel;
-    }
-
-    public void setTitel(String titel) {
-        this.titel = titel;
-    }
-
     public String getBeschrijving() {
         return beschrijving;
     }
@@ -83,8 +73,7 @@ public class Webcast {
     @Override
     public String toString() {
         return
-                " Titel='" + getTitel() + "'" +
-                        ", description='" + getBeschrijving() + "'" +
+                "Description='" + getBeschrijving() + "'" +
                         ", name speaker='" + getSprekerNaam() + "'" +
                         ", org. name='" + getOrganisatieNaam() + "'" +
                         ", time='" + getTijdsduur() + "'" +
