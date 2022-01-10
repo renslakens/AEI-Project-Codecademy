@@ -10,5 +10,6 @@
     <orderEntry type="library" name="javaFX" level="application" />
     <orderEntry type="library" name="mssql-jdbc-9.4.1.jre11" level="application" />
     <orderEntry type="library" name="junit-platform-console-standalone-1.8.0-javadoc" level="application" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
