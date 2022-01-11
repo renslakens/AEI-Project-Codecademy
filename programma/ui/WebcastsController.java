@@ -2,7 +2,6 @@ package programma.ui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,44 +11,42 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import programma.DB.CursistRepo;
+import programma.DB.WebcastRepo;
 import programma.domain.Cursist;
-import javafx.scene.Node;
-import java.awt.event.MouseEvent;
+import programma.domain.Webcast;
+
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class CursistenController implements Initializable {
-    CursistRepo cursistRepo = new CursistRepo();
+public class WebcastsController implements Initializable {
+    WebcastRepo webcastRepo = new WebcastRepo();
     Stage stage;
 
-    @FXML
-    private TableView<Cursist> cursistTableView;
-    @FXML
-    private TableColumn<Cursist, Integer> IDcolumn;
 
     @FXML
-    private TableColumn<Cursist, String> cursistEmailColumn;
+    private TableView<Webcast> webcastTableView;
 
     @FXML
-    private TableColumn<Cursist, String>  naamColumn;
+    private TableColumn<Webcast, Integer> IDcolumn;
 
     @FXML
-    private TableColumn<Cursist, String>  geboortedatumColumn;
-    @FXML
-    private TableColumn<Cursist, String>  postcodeColumn;
-    @FXML
-    private TableColumn<Cursist, String>  geslachtColumn;
+    private TableColumn<Webcast, String> webcastTitelColumn;
 
     @FXML
-    private TableColumn<Cursist, String>  adresColumn;
+    private TableColumn<Webcast, String> sprekerColumn;
 
     @FXML
-    private TableColumn<Cursist, String>  stadColumn;
+    private TableColumn<Webcast, String> organisatieColumn;
 
     @FXML
-    private TableColumn<Cursist, String>  landColumn;
+    private TableColumn<Webcast, String> tijdsduurColumn;
+
+    @FXML
+    private TableColumn<Webcast, String> publicatieColumn;
+
+    @FXML
+    private TableColumn<Webcast, String> urlColumn;
 
     @FXML
     private TextField zoekCursist;
@@ -60,27 +57,23 @@ public class CursistenController implements Initializable {
     @FXML
     private Button btnUpdate;
 
-    ObservableList<Cursist> cursistObservableList = FXCollections.observableArrayList();
+    ObservableList<Webcast> webcastsObservableList = FXCollections.observableArrayList();
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cursistObservableList.addAll(cursistRepo.get());
-        IDcolumn.setCellValueFactory(new PropertyValueFactory<>("cursistID"));
-        cursistEmailColumn.setCellValueFactory(new PropertyValueFactory<>("Email"));
-            adresColumn.setCellValueFactory(new PropertyValueFactory<>("adres"));
-            landColumn.setCellValueFactory(new PropertyValueFactory<>("land"));
-            geboortedatumColumn.setCellValueFactory(new PropertyValueFactory<>("geboorteDatum"));
-            naamColumn.setCellValueFactory(new PropertyValueFactory<>("naam"));
-            stadColumn.setCellValueFactory(new PropertyValueFactory<>("stad"));
-            geslachtColumn.setCellValueFactory(new PropertyValueFactory<>("geslacht"));
-            postcodeColumn.setCellValueFactory(new PropertyValueFactory<>("postcode"));
+        webcastsObservableList.addAll(webcastRepo.get());
+        IDcolumn.setCellValueFactory(new PropertyValueFactory<>("webcastID"));
+        tijdsduurColumn.setCellValueFactory(new PropertyValueFactory<>("tijdsduur"));
+            urlColumn.setCellValueFactory(new PropertyValueFactory<>("url"));
+            sprekerColumn.setCellValueFactory(new PropertyValueFactory<>("sprekerNaam"));
+            organisatieColumn.setCellValueFactory(new PropertyValueFactory<>("organisatieNaam"));
+            webcastTitelColumn.setCellValueFactory(new PropertyValueFactory<>("titel"));
+            publicatieColumn.setCellValueFactory(new PropertyValueFactory<>("publicatieDatum"));
 
 
 
-
-
-        cursistTableView.setItems(cursistObservableList);
+        webcastTableView.setItems(webcastsObservableList);
     }
     public void handleBtn() throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("fxml/addCursist.fxml"));
@@ -89,9 +82,9 @@ public class CursistenController implements Initializable {
         window.setResizable(false);
     }
 
-    @FXML
+     @FXML
     void handleDeleteBtn() {
-        int selectedID = cursistTableView.getSelectionModel().getSelectedIndex();
+      /*  int selectedID = cursistTableView.getSelectionModel().getSelectedIndex();
 
             if(selectedID > -1) {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Are you sure you want to delete this?", ButtonType.YES, ButtonType.CANCEL);
@@ -106,12 +99,12 @@ public class CursistenController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to delete, there is no data to delete \nPlease make sure your selected a row to delete"  , ButtonType.CLOSE);
 
                 alert.showAndWait();
-            }
+            }*/
 
     }
     @FXML
     void handleUpdateBtn() throws IOException {
-        int selectedID = cursistTableView.getSelectionModel().getSelectedIndex();
+       /* int selectedID = cursistTableView.getSelectionModel().getSelectedIndex();
 
         if(selectedID > -1) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Are you sure you want to update this?", ButtonType.YES, ButtonType.CANCEL);
@@ -130,7 +123,7 @@ public class CursistenController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to load update page, there is no data to update \nPlease make sure your selected a row to update"  , ButtonType.CLOSE);
 
             alert.showAndWait();
-        }
+        }*/
 
     }
 }

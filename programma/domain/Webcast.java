@@ -4,30 +4,43 @@ import java.util.Date;
 
 public class Webcast {
     // Attributes
-    private String beschrijving;
     private String sprekerNaam;
     private String organisatieNaam;
     private int tijdsduur;
     private Date publicatieDatum;
     private String url;
+    private String titel;
+    private int webcastID;
 
     // Constructor
-    public Webcast(String beschrijving, String sprekerNaam, String organisatieNaam, int tijdsduur, Date publicatieDatum, String url) {
-        this.beschrijving = beschrijving;
+    public Webcast(String sprekerNaam, String organisatieNaam, int tijdsduur, Date publicatieDatum, String url, String titel) {
+
         this.sprekerNaam = sprekerNaam;
         this.organisatieNaam = organisatieNaam;
         this.tijdsduur = tijdsduur;
         this.publicatieDatum = publicatieDatum;
         this.url = url;
+        this.titel = titel;
+        this.webcastID = 0;
     }
 
     // Getters and Setters
-    public String getBeschrijving() {
-        return beschrijving;
+
+
+    public Date getPublicatieDatum() {
+        return publicatieDatum;
     }
 
-    public void setBeschrijving(String beschrijving) {
-        this.beschrijving = beschrijving;
+    public void setPublicatieDatum(Date publicatieDatum) {
+        this.publicatieDatum = publicatieDatum;
+    }
+
+    public int getWebcastID() {
+        return webcastID;
+    }
+
+    public void setWebcastID(int webcastID) {
+        this.webcastID = webcastID;
     }
 
     public String getSprekerNaam() {
@@ -54,13 +67,6 @@ public class Webcast {
         this.tijdsduur = tijdsduur;
     }
 
-    public Date getPublicatieDatum() {
-        return publicatieDatum;
-    }
-
-    public void setPublicatieDatum(Date publicatieDatum) {
-        this.publicatieDatum = publicatieDatum;
-    }
 
     public String getUrl() {
         return url;
@@ -70,10 +76,17 @@ public class Webcast {
         this.url = url;
     }
 
+    public String getTitel() {
+        return titel;
+    }
+
+    public void setTitel(String titel) {
+        this.titel = titel;
+    }
+
     @Override
     public String toString() {
         return
-                "Description='" + getBeschrijving() + "'" +
                         ", name speaker='" + getSprekerNaam() + "'" +
                         ", org. name='" + getOrganisatieNaam() + "'" +
                         ", time='" + getTijdsduur() + "'" +

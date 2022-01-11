@@ -41,6 +41,12 @@ public class NavbarController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }else if (terug == 2){
+            try {
+                btnWebcasts();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }else {
             try {
                 btnHome();
@@ -73,8 +79,9 @@ public class NavbarController implements Initializable {
     }
 
     @FXML
-    void btnWebcasts(ActionEvent event) {
-
+    void btnWebcasts() throws IOException {
+        Pane view = FXMLLoader.load(getClass().getResource("fxml/webcasts.fxml"));
+        borderpane.setCenter((view));
     }
 
 }
