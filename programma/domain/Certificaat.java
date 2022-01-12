@@ -5,11 +5,11 @@ import java.sql.Date;
 public class Certificaat {
     // Attributes
     private int certificaatID;
-    private String beoordeling; // ten hoogste 10
+    private int beoordeling; // ten hoogste 10
     private String medewerkerNaam;
 
     // constructor
-    public Certificaat(int certificaatID, String beoordeling, String medewerkerNaam) {
+    public Certificaat(int certificaatID, int beoordeling, String medewerkerNaam) {
         this.certificaatID = certificaatID;
         this.beoordeling = beoordeling;
         this.medewerkerNaam = medewerkerNaam;
@@ -23,7 +23,7 @@ public class Certificaat {
         this.certificaatID = certificaatID;
     }
 
-    public String getBeoordeling() {
+    public int getBeoordeling() {
         return beoordeling;
     }
 
