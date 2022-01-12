@@ -27,7 +27,7 @@ public class Certificaat {
         return beoordeling;
     }
 
-    public void setBeoordeling(String beoordeling) {
+    public void setBeoordeling(int beoordeling) {
         this.beoordeling = beoordeling;
     }
 
