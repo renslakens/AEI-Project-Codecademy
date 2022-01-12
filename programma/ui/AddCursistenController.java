@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import programma.DB.CursistRepo;
 import programma.domain.Cursist;
@@ -61,12 +62,19 @@ public class AddCursistenController implements Initializable {
 
         if (txtEmail.getText() != null && txtNaam.getText() != null && dtGeboortedatum.getValue() != null && comboGeslacht.getValue() !=null
             && txtAdres.getText() != null && txtStad.getText()!= null && txtLand.getText() != null && txtPostcode.getText() != null) {
-
+        try {
             cursistRepo.create(new Cursist(txtEmail.getText(), txtNaam.getText(), java.sql.Date.valueOf(dtGeboortedatum.getValue()), comboGeslacht.getValue(),
                     txtAdres.getText(), txtStad.getText(), txtLand.getText(), txtPostcode.getText()));
+        }catch (Exception e){
+            txtSucces.setText("Cursist toevoegen mislukt");
+            txtSucces.setTextFill(Color.RED);
+            return;
+        }
             clearForm();
         }
         txtSucces.setText("Cursist succesvol toegevoegd");
+        txtSucces.setTextFill(Color.GREEN);
+
     }
 
     void clearForm(){

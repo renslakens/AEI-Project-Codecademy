@@ -15,10 +15,10 @@ public class WebcastRepo {
         String tijdsduur = String.valueOf(params.getTijdsduur());
         String publicatieDatum = String.valueOf(params.getPublicatieDatum());
         String url = params.getUrl();
-
+        String beschrijving = params.getBeschrijving();
         boolean rs = DatabaseConnection.executeQuery(String.format(
-                "INSERT INTO Webcasts(Tijdsduur, Url, Spreker, Organisatie,Titel,DatumPublicatie) VALUES ('%s', '%s', '%s','%s','%s','%s')",
-                tijdsduur, url, sprekerNaam, organisatieNaam,titel, publicatieDatum));
+                "INSERT INTO Webcasts(Tijdsduur, Url, Spreker, Organisatie,Titel,DatumPublicatie,Beschrijving) VALUES ('%s', '%s', '%s','%s','%s','%s','%s')",
+                tijdsduur, url, sprekerNaam, organisatieNaam,titel, publicatieDatum,beschrijving));
 
     }
 
@@ -29,7 +29,7 @@ public class WebcastRepo {
 
         try {
             while (rs.next()) {
-                Webcast webcast = new Webcast(null,null,0,null,null,null);
+                Webcast webcast = new Webcast(null,null,0,null,null,null,null);
                 webcast.setWebcastID(rs.getInt("ContentItemID"));
                 webcast.setTitel(rs.getString("Titel"));
                 webcast.setSprekerNaam(rs.getString("Spreker"));
@@ -37,6 +37,28 @@ public class WebcastRepo {
                 webcast.setTijdsduur(rs.getInt("Tijdsduur"));
                 webcast.setPublicatieDatum(rs.getDate("DatumPublicatie"));
                 webcast.setUrl(rs.getString("Url"));
+                webcast.setBeschrijving(rs.getString("Beschrijving"));
+                webcastList.add(webcast);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("FAILED TO LOAD");
+            return null;
+        }
+        return webcastList;
+    }
+
+    public ArrayList<Webcast> getTop3() {
+        ResultSet rs = DatabaseConnection
+                .execute("SELECT TOP 3 Titel, Spreker FROM Webcasts");
+        ArrayList<Webcast> webcastList = new ArrayList<>();
+
+        try {
+            while (rs.next()) {
+                Webcast webcast = new Webcast(null,null);
+                webcast.setTitel(rs.getString("Titel"));
+                webcast.setSprekerNaam(rs.getString("Spreker"));
                 webcastList.add(webcast);
             }
 
@@ -50,7 +72,7 @@ public class WebcastRepo {
     public Webcast getWebast(int id) {
         ResultSet rs = DatabaseConnection
                 .execute(String.format("SELECT * FROM Webcasts WHERE ContentItemID = %d",id));
-        Webcast webcast = new Webcast(null,null,0,null,null,null);
+        Webcast webcast = new Webcast(null,null,0,null,null,null,null);
 
         try {
             while (rs.next()) {
@@ -61,6 +83,8 @@ public class WebcastRepo {
                 webcast.setTijdsduur(rs.getInt("Tijdsduur"));
                 webcast.setPublicatieDatum(rs.getDate("Datum"));
                 webcast.setUrl(rs.getString("Url"));
+                webcast.setBeschrijving(rs.getString("Beschrijving"));
+
             }
 
         } catch (Exception e) {

@@ -10,10 +10,11 @@ public class Webcast {
     private Date publicatieDatum;
     private String url;
     private String titel;
+    private String beschrijving;
     private int webcastID;
 
     // Constructor
-    public Webcast(String sprekerNaam, String organisatieNaam, int tijdsduur, Date publicatieDatum, String url, String titel) {
+    public Webcast(String sprekerNaam, String organisatieNaam, int tijdsduur, Date publicatieDatum, String url, String titel, String beschrijving) {
 
         this.sprekerNaam = sprekerNaam;
         this.organisatieNaam = organisatieNaam;
@@ -22,8 +23,23 @@ public class Webcast {
         this.url = url;
         this.titel = titel;
         this.webcastID = 0;
+        this.beschrijving = beschrijving;
     }
 
+    public String getBeschrijving() {
+        return beschrijving;
+    }
+
+    public void setBeschrijving(String beschrijving) {
+        this.beschrijving = beschrijving;
+    }
+
+    public Webcast(String sprekerNaam, String titel) {
+
+        this.sprekerNaam = sprekerNaam;
+
+        this.titel = titel;
+    }
     // Getters and Setters
 
 
