@@ -122,7 +122,7 @@ public class WebcastsController implements Initializable {
     }
     @FXML
     void handleUpdateBtn() throws IOException {
-       /* int selectedID = cursistTableView.getSelectionModel().getSelectedIndex();
+       int selectedID = webcastTableView.getSelectionModel().getSelectedIndex();
 
         if(selectedID > -1) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Are you sure you want to update this?", ButtonType.YES, ButtonType.CANCEL);
@@ -130,9 +130,9 @@ public class WebcastsController implements Initializable {
             alert.showAndWait();
 
             if (alert.getResult() == ButtonType.YES) {
-                UpdateCursistenController.indexCursist = IDcolumn.getCellData(selectedID);
+                UpdateWebcastsController.indexCursist = IDcolumn.getCellData(selectedID);
                 System.out.println(IDcolumn.getCellData(selectedID));
-                Parent root = FXMLLoader.load(getClass().getResource("fxml/updateCursist.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("fxml/updateWebcast.fxml"));
                 Stage window = (Stage)btnUpdate.getScene().getWindow();
                 window.setScene(new Scene(root, 1080,600));
                 window.setResizable(false);
@@ -141,7 +141,7 @@ public class WebcastsController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to load update page, there is no data to update \nPlease make sure your selected a row to update"  , ButtonType.CLOSE);
 
             alert.showAndWait();
-        }*/
+        }
 
     }
 }

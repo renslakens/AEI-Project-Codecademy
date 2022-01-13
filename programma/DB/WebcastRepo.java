@@ -81,7 +81,7 @@ public class WebcastRepo {
                 webcast.setSprekerNaam(rs.getString("Spreker"));
                 webcast.setOrganisatieNaam(rs.getString("Organisatie"));
                 webcast.setTijdsduur(rs.getInt("Tijdsduur"));
-                webcast.setPublicatieDatum(rs.getDate("Datum"));
+                webcast.setPublicatieDatum(rs.getDate("DatumPublicatie"));
                 webcast.setUrl(rs.getString("Url"));
                 webcast.setBeschrijving(rs.getString("Beschrijving"));
 
@@ -97,13 +97,14 @@ public class WebcastRepo {
         String titel = params.getTitel();
         String sprekerNaam = params.getSprekerNaam();
         String organisatieNaam = params.getOrganisatieNaam();
-        String tijdsduur = String.valueOf(params.getTijdsduur());
+        int tijdsduur = params.getTijdsduur();
         String publicatieDatum = String.valueOf(params.getPublicatieDatum());
         String url = params.getUrl();
+        String beschrijving = params.getBeschrijving();
 
-//        boolean rs = DatabaseConnection.executeQuery(String.format(
-//                "UPDATE Webcasts SET Spreker = '%s', Url = '%s', Organisatie = '%s', Geslacht = '%s', Adres = '%s',Stad = '%s', Land = '%s', postcode = '%s' WHERE ContentItemID = %d;",
-//                email,naam, geboortedatum, geslacht, adres, stad, land, postcode,id));
+       boolean rs = DatabaseConnection.executeQuery(String.format(
+                "UPDATE Webcasts SET Spreker = '%s', Url = '%s', Organisatie = '%s', Titel = '%s', Tijdsduur = '%d',DatumPublicatie = '%s', Beschrijving = '%s' WHERE ContentItemID = %d;",
+               sprekerNaam, url, organisatieNaam,titel,tijdsduur, publicatieDatum,beschrijving,id));
 
 
     }
