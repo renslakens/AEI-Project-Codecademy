@@ -9,26 +9,26 @@ import java.text.ParseException;
 
 public class Validatie {
 
-    public boolean validatieUrl(String Url){
+    public static boolean validatieUrl(String Url){
         boolean valid;
         valid = Url.matches("https://(.*)");
         return valid;
     }
 
-    public boolean validatieEmail(String Email){
+    public static boolean validatieEmail(String Email){
         boolean valid;
         valid = Email.matches("(.*)@(.*)");
         return valid;
     }
 
-    public boolean validatieDatum(Date datum){
+    public static boolean validatieDatum(Date datum){
         if (datum != null && datum.before(new Date())) {
             return true;
         }
         return false;
     }
 
-    public boolean validatieGeslacht(String gender){
+    public static boolean validatieGeslacht(String gender){
         if (gender.equals("Man") || gender.equals("Vrouw")) {
             return true;
         }else{
@@ -37,7 +37,7 @@ public class Validatie {
     }
 
     //check op cijfers en nummers
-    public boolean validatiePostcode(String postcode){
+    public static boolean validatiePostcode(String postcode){
         if (postcode.equals(null)) {
             return false;
         } else if (postcode.length() <= 5 || postcode.length() >= 7) {

@@ -14,29 +14,31 @@ public class CursusRepo {
         String onderwerp = params.getOnderwerp();
         String introductieTekst = params.getIntroductieTekst();
         String niveau = params.getNiveau();
-        String interestingCourse = String.valueOf(params.getInterestingCursus());
-
+        String webcastTitel = params.getWebcastTitel();
+        String moduleTitel = params.getModuleTitel();
         boolean rs = DatabaseConnection.executeQuery(String.format(
-                "INSERT INTO Cursus(volgnummer, cursusNaam, onderwerp, introductieTekst, niveau, interestingCursus) VALUES ('%s', '%s', '%s','%s','%s','%s','%s','%s')",
-                cursusID, naam, onderwerp, introductieTekst, niveau, interestingCourse));
+                "INSERT INTO Cursussen(CursusNaam, Onderwerp, IntroductieTekst, Niveau, WebCastTitel,ModuleTitel ) VALUES ('%s', '%s', '%s','%s','%s','%s')",
+                naam, onderwerp, introductieTekst, niveau,webcastTitel,moduleTitel));
 
     }
 
     public ArrayList<Cursus> get() {
         ResultSet rs = DatabaseConnection
-                .execute("SELECT * FROM Cursus");
+                .execute("SELECT * FROM Cursussen");
         ArrayList<Cursus> cursusList = new ArrayList<>();
 
         try {
             while (rs.next()) {
 
-                Cursus cursus = new Cursus(0,null,null,null,null,null);
-                cursus.setVolgnummer(rs.getInt("Volgnummer"));
-                cursus.setCursusNaam(rs.getString("cursusNaam"));
-                cursus.setOnderwerp(rs.getString("onderwerp"));
-                cursus.setIntroductieTekst(rs.getString("introductieTekst"));
-                cursus.setNiveau(rs.getString("niveau"));
-                cursus.setInterestingCursus(new ArrayList<>()/* Loop gebruiken?*/); // Geen rs.getArrayList ?
+                Cursus cursus = new Cursus(null,null,null,null,null,null);
+                cursus.setVolgnummer(rs.getInt("VolgNummer"));
+                cursus.setCursusNaam(rs.getString("CursusNaam"));
+                cursus.setOnderwerp(rs.getString("Onderwerp"));
+                cursus.setIntroductieTekst(rs.getString("IntroductieTekst"));
+                cursus.setNiveau(rs.getString("Niveau"));
+                cursus.setModuleTitel(rs.getString("ModuleTitel"));
+                cursus.setWebcastTitel(rs.getString("WebcastTitel"));
+
                 cursusList.add(cursus);
             }
 
@@ -48,18 +50,19 @@ public class CursusRepo {
     }
     public Cursus getCursus(int id) {
         ResultSet rs = DatabaseConnection
-                .execute(String.format("SELECT * FROM Cursus WHERE CursusID = %d",id));
-        Cursus cursus = new Cursus(0,null,null,null,null,null);
+                .execute(String.format("SELECT * FROM Cursus WHERE VolgNummer = %d",id));
+        Cursus cursus = new Cursus(null,null,null,null,null,null);
 
         try {
             while (rs.next()) {
 
-                cursus.setVolgnummer(rs.getInt("Volgnummer"));
-                cursus.setCursusNaam(rs.getString("cursusNaam"));
-                cursus.setOnderwerp(rs.getString("onderwerp"));
-                cursus.setIntroductieTekst(rs.getString("introductieTekst"));
-                cursus.setNiveau(rs.getString("niveau"));
-                cursus.setInterestingCursus(new ArrayList<>()/* Loop gebruiken?*/); // Geen rs.getArrayList ?
+                cursus.setVolgnummer(rs.getInt("VolgNummer"));
+                cursus.setCursusNaam(rs.getString("CursusNaam"));
+                cursus.setOnderwerp(rs.getString("Onderwerp"));
+                cursus.setIntroductieTekst(rs.getString("IntroductieTekst"));
+                cursus.setNiveau(rs.getString("Niveau"));
+                cursus.setModuleTitel(rs.getString("ModuleTitel"));
+                cursus.setWebcastTitel(rs.getString("WebcastTitel"));
             }
 
         } catch (Exception e) {
@@ -74,14 +77,14 @@ public class CursusRepo {
         String onderwerp = params.getOnderwerp();
         String introductieTekst = params.getIntroductieTekst();
         String niveau = params.getNiveau();
-        String interestingCourse = String.valueOf(params.getInterestingCursus());
-
+        String moduleTitel = params.getModuleTitel();
+        String webcastTitel = params.getWebcastTitel();
         boolean rs = DatabaseConnection.executeQuery(String.format(
                 "UPDATE Cursus SET Volgnummer = '%s', cursusNaam = '%s', Onderwerp = '%s', introductieTekst = '%s', Niveau = '%s', interestingCourse = '%s' WHERE Volgnummer = %d;",
-                cursusID, naam, onderwerp, introductieTekst, niveau, interestingCourse, cursusID));
+                cursusID, naam, onderwerp, introductieTekst, niveau, cursusID));
     }
 
     public void delete(int id) {
-        ResultSet rs = DatabaseConnection.execute(String.format("DELETE FROM Cursus WHERE Volgnummer = %d; SELECT * FROM Cursus;", id));
+        ResultSet rs = DatabaseConnection.execute(String.format("DELETE FROM Cursussen WHERE Volgnummer = %d; SELECT * FROM Cursussen;", id));
     }
 }

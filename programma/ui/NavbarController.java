@@ -47,7 +47,14 @@ public class NavbarController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else {
+        }else if(terug == 3){
+            try {
+                btnCursussen();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
             try {
                 btnHome();
             } catch (IOException e) {
@@ -57,7 +64,7 @@ public class NavbarController implements Initializable {
 
     }
     @FXML
-    void btnCertificaten(ActionEvent event) {
+    void btnCertificaten() {
 
     }
 
@@ -68,8 +75,9 @@ public class NavbarController implements Initializable {
     }
 
     @FXML
-    void btnCursussen(ActionEvent event) {
-
+    void btnCursussen() throws IOException{
+        Pane view = FXMLLoader.load(getClass().getResource("fxml/cursussen.fxml"));
+        borderpane.setCenter((view));
     }
 
     @FXML

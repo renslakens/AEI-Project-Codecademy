@@ -39,8 +39,12 @@ public class MainMenuController {
     }
 
     @FXML
-    void btnCursussen(ActionEvent event) {
-
+    void btnCursussen(ActionEvent event) throws IOException{
+        NavbarController.terug = 3;
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/navbar.fxml"));
+        Stage window = (Stage)btnMainWebcasts.getScene().getWindow();
+        window.setScene(new Scene(root, 1370,600));
+        window.setResizable(false);
     }
 
     @FXML

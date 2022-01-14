@@ -48,7 +48,32 @@ public class WebcastRepo {
         }
         return webcastList;
     }
+    public ArrayList<String> getTitels() {
+        ResultSet rs = DatabaseConnection
+                .execute("SELECT * FROM Webcasts");
+        ArrayList<String> webcastList = new ArrayList<>();
 
+        try {
+            while (rs.next()) {
+                Webcast webcast = new Webcast(null,null,0,null,null,null,null);
+                webcast.setWebcastID(rs.getInt("ContentItemID"));
+                webcast.setTitel(rs.getString("Titel"));
+                webcast.setSprekerNaam(rs.getString("Spreker"));
+                webcast.setOrganisatieNaam(rs.getString("Organisatie"));
+                webcast.setTijdsduur(rs.getInt("Tijdsduur"));
+                webcast.setPublicatieDatum(rs.getDate("DatumPublicatie"));
+                webcast.setUrl(rs.getString("Url"));
+                webcast.setBeschrijving(rs.getString("Beschrijving"));
+                webcastList.add(webcast.getTitel());
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("FAILED TO LOAD");
+            return null;
+        }
+        return webcastList;
+    }
     public ArrayList<Webcast> getTop3() {
         ResultSet rs = DatabaseConnection
                 .execute("SELECT TOP 3 Titel, Spreker FROM Webcasts");
