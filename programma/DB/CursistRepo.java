@@ -9,6 +9,7 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import programma.DB.Crud;
 import programma.domain.Cursist;
+import programma.domain.Inschrijving;
 
 public class CursistRepo {
 
@@ -57,6 +58,31 @@ public class CursistRepo {
         }
         return cursistsList;
     }
+    public String getCursistGeslacht(String email) {
+        ResultSet rs = DatabaseConnection
+                .execute(String.format("SELECT * FROM Cursist WHERE CursistEmail = '%s'",email));
+        Cursist cursist = new Cursist(null,null,null,null,null,null,null,null);
+
+        try {
+            while (rs.next()) {
+
+                cursist.setCursistID(rs.getInt("CursistID"));
+                cursist.setEmail(rs.getString("CursistEmail"));
+                cursist.setAdres(rs.getString("Adres"));
+                cursist.setNaam(rs.getString("Naam"));
+                cursist.setGeboorteDatum(rs.getDate("Geboortedatum"));
+                cursist.setGeslacht(rs.getString("Geslacht"));
+                cursist.setStad(rs.getString("Stad"));
+                cursist.setLand(rs.getString("Land"));
+                cursist.setPostcode(rs.getString("postcode"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return cursist.getGeslacht();
+    }
     public Cursist getCursist(int id) {
         ResultSet rs = DatabaseConnection
                 .execute(String.format("SELECT * FROM Cursist WHERE CursistID = %d",id));
@@ -81,6 +107,23 @@ public class CursistRepo {
             return null;
         }
         return cursist;
+    }
+    public boolean getByEmailValidation(String email) {
+        ResultSet rs = DatabaseConnection
+                .execute(String.format("SELECT * FROM Cursist WHERE CursistEmail = '%s'",email));
+        ArrayList<String> cursistenList = new ArrayList<>();
+
+        try {
+           if(!rs.next()){
+               return true;
+           }else {
+               return false;
+           }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return true;
     }
     public void update(int id, Cursist params) {
         int cursistID = params.getCursistID();

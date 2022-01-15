@@ -47,3 +47,13 @@
     -fx-background-insets: 0;
     -fx-background-radius: 1;
 }
+
+#geslaagd .text{
+    -fx-fill : green;
+     -fx-background-color: green;
+
+}
+
+#not-error .text{
+    -fx-fill : black;
+}

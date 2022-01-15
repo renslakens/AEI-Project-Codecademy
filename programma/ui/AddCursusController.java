@@ -22,6 +22,7 @@ import programma.domain.Module;
 import programma.domain.Webcast;
 import programma.logic.Validatie;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.text.ParseException;
@@ -40,6 +41,8 @@ public class AddCursusController implements Initializable {
 
     @FXML
     private Button btnAdd;
+    @FXML
+    private Button btnAddModule;
 
     @FXML
     private TextField txtOnderwerp;
@@ -120,6 +123,63 @@ public class AddCursusController implements Initializable {
         window.setResizable(false);
 
     }
+    @FXML
+    void handleAddModule() throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/addModule.fxml"));
+        Stage window = (Stage)btnAddModule.getScene().getWindow();
+        window.setScene(new Scene(root, 1080,600));
+        window.setResizable(false);
+
+    }
+
+    @FXML
+    void handleDeleteBtn() {
+        int selectedID = ModuleTableView.getSelectionModel().getSelectedIndex();
+
+        if(selectedID > -1) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Are you sure you want to delete this?", ButtonType.YES, ButtonType.CANCEL);
+
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.YES) {
+                moduleRepo.delete(IDColumn.getCellData(selectedID));
+                ModuleTableView.getItems().remove(selectedID);
+                cbModule.setItems(FXCollections.observableArrayList(moduleRepo.getTitels()));
+            }
+        }else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to delete, there is no data to delete \nPlease make sure your selected a row to delete"  , ButtonType.CLOSE);
+
+            alert.showAndWait();
+        }
+
+    }
+    @FXML
+    void handleUpdateBtn() throws IOException {
+      /* int selectedID = webcastTableView.getSelectionModel().getSelectedIndex();
+
+        if(selectedID > -1) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Are you sure you want to update this?", ButtonType.YES, ButtonType.CANCEL);
+
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.YES) {
+                UpdateWebcastsController.indexCursist = IDcolumn.getCellData(selectedID);
+                System.out.println(IDcolumn.getCellData(selectedID));
+                Parent root = FXMLLoader.load(getClass().getResource("fxml/updateWebcast.fxml"));
+                Stage window = (Stage)btnUpdate.getScene().getWindow();
+                window.setScene(new Scene(root, 1080,600));
+                window.setResizable(false);
+            }
+        }else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to load update page, there is no data to update \nPlease make sure your selected a row to update"  , ButtonType.CLOSE);
+
+            alert.showAndWait();
+        }
+*/
+    }
+
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

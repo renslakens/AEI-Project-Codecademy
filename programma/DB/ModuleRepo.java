@@ -73,7 +73,7 @@ public class ModuleRepo {
         }
         return modulesList;
     }
-    public Module getCursist(int id) {
+    public Module getModule(int id) {
         ResultSet rs = DatabaseConnection
                 .execute(String.format("SELECT * FROM Modules WHERE ContentItemID = %d",id));
         Module module = new Module(null,null,null,null,null);

@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import programma.domain.Cursus;
+import programma.domain.Inschrijving;
 
 public class CursusRepo {
 
@@ -44,6 +45,32 @@ public class CursusRepo {
 
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
+        }
+        return cursusList;
+    }
+    public ArrayList<String> getTitels() {
+        ResultSet rs = DatabaseConnection
+                .execute("SELECT * FROM Cursussen");
+        ArrayList<String> cursusList = new ArrayList<>();
+
+        try {
+            while (rs.next()) {
+                Cursus cursus = new Cursus(null,null,null,null,null,null);
+                cursus.setVolgnummer(rs.getInt("VolgNummer"));
+                cursus.setCursusNaam(rs.getString("CursusNaam"));
+                cursus.setOnderwerp(rs.getString("Onderwerp"));
+                cursus.setIntroductieTekst(rs.getString("IntroductieTekst"));
+                cursus.setNiveau(rs.getString("Niveau"));
+                cursus.setModuleTitel(rs.getString("ModuleTitel"));
+                cursus.setWebcastTitel(rs.getString("WebcastTitel"));
+
+                cursusList.add(cursus.getCursusNaam());
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("FAILED TO LOAD");
             return null;
         }
         return cursusList;

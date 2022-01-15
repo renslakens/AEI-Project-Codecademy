@@ -56,7 +56,7 @@ public class AddCursistenController implements Initializable {
     private Label txtSucces;
 
     @FXML
-    private Button btnAdd;
+    private Button handleAddModule;
 
     @FXML
     void handleAddButton(ActionEvent event) throws ParseException {
@@ -83,7 +83,7 @@ public class AddCursistenController implements Initializable {
             txtSucces.setTextFill(Color.RED);
             return;
         }
-        
+
         if (txtEmail.getText() != null && txtNaam.getText() != null && dtGeboortedatum.getValue() != null && comboGeslacht.getValue() !=null
             && txtAdres.getText() != null && txtStad.getText()!= null && txtLand.getText() != null && txtPostcode.getText() != null) {
         try {

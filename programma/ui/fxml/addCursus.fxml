@@ -6,6 +6,9 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
@@ -83,10 +86,48 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Button fx:id="btnAdd1" defaultButton="true" layoutX="860.0" layoutY="433.0" mnemonicParsing="false" onAction="#handleAddButton" prefHeight="37.0" prefWidth="152.0" style="-fx-background-color: green;" text="ADD MODULE" textFill="WHITE">
+      <Button fx:id="btnAddModule" defaultButton="true" layoutX="855.0" layoutY="432.0" mnemonicParsing="false" onAction="#handleAddModule" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: green;" text="+ Module" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="17.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
+      </Button>
+      <Button fx:id="btnAddModule1" defaultButton="true" layoutX="980.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleDeleteBtn" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: red;" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/bin.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0">
+                     <input>
+                        <ColorAdjust />
+                     </input>
+                  </ColorAdjust>
+               </effect>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnAddModule11" defaultButton="true" layoutX="940.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleUpdateBtn" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: purple;" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/refresh.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0">
+                     <input>
+                        <ColorAdjust />
+                     </input>
+                  </ColorAdjust>
+               </effect>
+            </ImageView>
+         </graphic>
       </Button>
    </children>
 </Pane>

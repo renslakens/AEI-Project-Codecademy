@@ -5,14 +5,28 @@ import java.sql.Date;
 public class Certificaat {
     // Attributes
     private int certificaatID;
-    private int beoordeling; // ten hoogste 10
-    private String medewerkerNaam;
+    private int beoordeling; // ten hoogste 100
+    private String ondertekenaar;
+    private String cursist;
+    private String cursus;
+    private String geslachtCursist;
 
     // constructor
-    public Certificaat(int certificaatID, int beoordeling, String medewerkerNaam) {
-        this.certificaatID = certificaatID;
+
+
+    public Certificaat( int beoordeling, String ondertekenaar, String cursist, String cursus, String geslachtCursist) {
+        this.certificaatID = 0;
         this.beoordeling = beoordeling;
-        this.medewerkerNaam = medewerkerNaam;
+        this.ondertekenaar = ondertekenaar;
+        this.cursist = cursist;
+        this.cursus = cursus;
+        this.geslachtCursist = geslachtCursist;
+    }
+
+    public Certificaat(int beoordeling, String ondertekenaar) {
+        this.certificaatID = 0;
+        this.beoordeling = beoordeling;
+        this.ondertekenaar = ondertekenaar;
     }
 
     public int getCertificaatID() {
@@ -31,19 +45,47 @@ public class Certificaat {
         this.beoordeling = beoordeling;
     }
 
-    public String getMedewerkerNaam() {
-        return medewerkerNaam;
+    public String getOndertekenaar() {
+        return ondertekenaar;
     }
 
-    public void setMedewerkerNaam(String medewerkerNaam) {
-        this.medewerkerNaam = medewerkerNaam;
+    public void setOndertekenaar(String ondertekenaar) {
+        this.ondertekenaar = ondertekenaar;
+    }
+
+    public String getCursist() {
+        return cursist;
+    }
+
+    public void setCursist(String cursist) {
+        this.cursist = cursist;
+    }
+
+    public String getCursus() {
+        return cursus;
+    }
+
+    public void setCursus(String cursus) {
+        this.cursus = cursus;
+    }
+
+    public String getGeslachtCursist() {
+        return geslachtCursist;
+    }
+
+    public void setGeslachtCursist(String geslachtCursist) {
+        this.geslachtCursist = geslachtCursist;
     }
 
     @Override
     public String toString() {
-        return " certificate='" + getCertificaatID() + "'" +
-                ", rating='" + getBeoordeling() + "'" +
-                ", name employee='" + getMedewerkerNaam() + "'";
+        return "Certificaat{" +
+                "certificaatID=" + certificaatID +
+                ", beoordeling=" + beoordeling +
+                ", ondertekenaar='" + ondertekenaar + '\'' +
+                ", cursist='" + cursist + '\'' +
+                ", cursus='" + cursus + '\'' +
+                ", geslachtCursist='" + geslachtCursist + '\'' +
+                '}';
     }
-
 }

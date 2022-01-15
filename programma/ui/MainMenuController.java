@@ -23,12 +23,25 @@ public class MainMenuController {
 
     @FXML
     private Button btnMainCursisten;
+    @FXML
+    private Button btnMainInschrijvingen;
 
     @FXML
-    void btnCertificaten(ActionEvent event) {
-
+    void btnCertificaten() throws IOException {
+        NavbarController.terug = 4;
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/navbar.fxml"));
+        Stage window = (Stage)btnMainCertificaten.getScene().getWindow();
+        window.setScene(new Scene(root, 1370,600));
+        window.setResizable(false);
     }
-
+    @FXML
+    void btnInschrijvingen() throws IOException {
+        NavbarController.terug = 5;
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/navbar.fxml"));
+        Stage window = (Stage)btnMainInschrijvingen.getScene().getWindow();
+        window.setScene(new Scene(root, 1370,600));
+        window.setResizable(false);
+    }
     @FXML
     void btnCursisten(ActionEvent event) throws IOException {
         NavbarController.terug = 1;
@@ -42,7 +55,7 @@ public class MainMenuController {
     void btnCursussen(ActionEvent event) throws IOException{
         NavbarController.terug = 3;
         Parent root = FXMLLoader.load(getClass().getResource("fxml/navbar.fxml"));
-        Stage window = (Stage)btnMainWebcasts.getScene().getWindow();
+        Stage window = (Stage)btnMainCursussen.getScene().getWindow();
         window.setScene(new Scene(root, 1370,600));
         window.setResizable(false);
     }
