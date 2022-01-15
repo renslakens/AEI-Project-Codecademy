@@ -73,10 +73,10 @@
                </font></Button>
         </buttons>
       </ButtonBar>
-      <TableView fx:id="webcastTopThreeTableView" fixedCellSize="-3.0" layoutX="658.0" layoutY="98.0" prefHeight="124.0" prefWidth="418.0" stylesheets="@../../css/tableview.css">
+      <TableView fx:id="cursusTopThreeTableView" fixedCellSize="-3.0" layoutX="658.0" layoutY="98.0" prefHeight="124.0" prefWidth="418.0" stylesheets="@../../css/tableview.css">
          <columns>
-            <TableColumn fx:id="titelTopThreeColumn" prefWidth="139.20001220703125" text="Titel" />
-            <TableColumn fx:id="sprekerTopThreeColumn" prefWidth="275.20001220703125" text="Spreker" />
+            <TableColumn fx:id="cursusThreeColumn" prefWidth="139.20001220703125" text="Cursus" />
+            <TableColumn fx:id="niveauTopThreeColumn" prefWidth="275.20001220703125" text="Niveau" />
          </columns>
       </TableView>
       <Label layoutX="803.0" layoutY="56.0" text="Top 3 Cursussen" textFill="WHITE">

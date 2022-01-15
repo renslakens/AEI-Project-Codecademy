@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import programma.domain.Cursus;
 import programma.domain.Inschrijving;
+import programma.domain.Webcast;
 
 public class CursusRepo {
 
@@ -49,6 +50,26 @@ public class CursusRepo {
         }
         return cursusList;
     }
+    public ArrayList<Cursus> getTop3() {
+        ResultSet rs = DatabaseConnection
+                .execute("SELECT TOP 3 CursusNaam, Niveau FROM Cursussen");
+        ArrayList<Cursus> cursusList = new ArrayList<>();
+
+        try {
+            while (rs.next()) {
+                Cursus cursus = new Cursus(null,null);
+                cursus.setCursusNaam(rs.getString("CursusNaam"));
+                cursus.setNiveau(rs.getString("Niveau"));
+                cursusList.add(cursus);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("FAILED TO LOAD");
+            return null;
+        }
+        return cursusList;
+    }
     public ArrayList<String> getTitels() {
         ResultSet rs = DatabaseConnection
                 .execute("SELECT * FROM Cursussen");
@@ -77,7 +98,7 @@ public class CursusRepo {
     }
     public Cursus getCursus(int id) {
         ResultSet rs = DatabaseConnection
-                .execute(String.format("SELECT * FROM Cursus WHERE VolgNummer = %d",id));
+                .execute(String.format("SELECT * FROM Cursussen WHERE VolgNummer = %d",id));
         Cursus cursus = new Cursus(null,null,null,null,null,null);
 
         try {
@@ -104,11 +125,11 @@ public class CursusRepo {
         String onderwerp = params.getOnderwerp();
         String introductieTekst = params.getIntroductieTekst();
         String niveau = params.getNiveau();
-        String moduleTitel = params.getModuleTitel();
         String webcastTitel = params.getWebcastTitel();
+        String moduleTitel = params.getModuleTitel();
         boolean rs = DatabaseConnection.executeQuery(String.format(
-                "UPDATE Cursus SET Volgnummer = '%s', cursusNaam = '%s', Onderwerp = '%s', introductieTekst = '%s', Niveau = '%s', interestingCourse = '%s' WHERE Volgnummer = %d;",
-                cursusID, naam, onderwerp, introductieTekst, niveau, cursusID));
+                "UPDATE Cursussen SET CursusNaam = '%s', IntroductieTekst = '%s', Niveau = '%s', WebcastTitel = '%s', ModuleTitel = '%s', Onderwerp = '%s' WHERE VolgNummer = %d;",
+                naam, introductieTekst, niveau, webcastTitel,moduleTitel,onderwerp, id));
     }
 
     public void delete(int id) {

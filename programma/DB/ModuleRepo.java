@@ -95,21 +95,17 @@ public class ModuleRepo {
         }
         return module;
     }
-    public void update(int id, Cursist params) {
-        //TODO
-        int cursistID = params.getCursistID();
-        String adres = params.getAdres();
-        String naam = params.getNaam();
-        String email = params.getEmail();
-        String geboortedatum = String.valueOf(params.getGeboorteDatum());
-        String geslacht = params.getGeslacht();
-        String stad = params.getStad();
-        String land = params.getLand();
-        String postcode = params.getPostcode();
+    public void update(int id, Module params) {
+        int moduleID = params.getModuleID();
+        String beschrijving = params.getBeschrijving();
+        String titel = params.getTitel();
+        String versie = params.getVersie();
+        String contactNaam = params.getContactNaam();
+        String contactEmail = params.getContactEmail();
 
         boolean rs = DatabaseConnection.executeQuery(String.format(
-                "UPDATE Cursist SET CursistEmail = '%s', Naam = '%s', Geboortedatum = '%s', Geslacht = '%s', Adres = '%s',Stad = '%s', Land = '%s', postcode = '%s' WHERE CursistID = %d;",
-                email,naam, geboortedatum, geslacht, adres, stad, land, postcode,id));
+                "UPDATE Modules SET Titel = '%s', Versie = '%s', Beschrijving = '%s', ContactNaam = '%s', ContactEmail = '%s' WHERE ContentItemID = %d;",
+                titel,versie, beschrijving, contactNaam, contactEmail,id));
 
 
     }

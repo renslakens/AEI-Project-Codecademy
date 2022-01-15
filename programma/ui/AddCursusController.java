@@ -83,12 +83,27 @@ public class AddCursusController implements Initializable {
 
     @FXML
     private TableColumn<Module, String> emailColumn;
-
+    @FXML
+    private Button btnUpdate;
     ObservableList<Module> moduleObservableList = FXCollections.observableArrayList();
 
     @FXML
     void handleAddButton(ActionEvent event) throws ParseException {
-
+        if (txtCursus.getText().isEmpty()){
+            txtSucces.setText("Cursus veld is leeg");
+            txtSucces.setTextFill(Color.RED);
+            return;
+        }
+        if (txtOnderwerp.getText().isEmpty()){
+            txtSucces.setText("Onderwerp veld is leeg");
+            txtSucces.setTextFill(Color.RED);
+            return;
+        }
+        if (txtIntroductie.getText().isEmpty()){
+            txtSucces.setText("Introductie veld is leeg");
+            txtSucces.setTextFill(Color.RED);
+            return;
+        }
         if (txtOnderwerp.getText() != null && txtCursus.getText() != null && txtIntroductie.getText() != null && cbModule.getValue() !=null
              && cbWebcast.getValue()!= null && cbNiveau.getValue() != null) {
         try {
@@ -155,7 +170,7 @@ public class AddCursusController implements Initializable {
     }
     @FXML
     void handleUpdateBtn() throws IOException {
-      /* int selectedID = webcastTableView.getSelectionModel().getSelectedIndex();
+        int selectedID = ModuleTableView.getSelectionModel().getSelectedIndex();
 
         if(selectedID > -1) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Are you sure you want to update this?", ButtonType.YES, ButtonType.CANCEL);
@@ -163,9 +178,9 @@ public class AddCursusController implements Initializable {
             alert.showAndWait();
 
             if (alert.getResult() == ButtonType.YES) {
-                UpdateWebcastsController.indexCursist = IDcolumn.getCellData(selectedID);
-                System.out.println(IDcolumn.getCellData(selectedID));
-                Parent root = FXMLLoader.load(getClass().getResource("fxml/updateWebcast.fxml"));
+                UpdateModuleController.indexModule = IDColumn.getCellData(selectedID);
+                System.out.println(IDColumn.getCellData(selectedID));
+                Parent root = FXMLLoader.load(getClass().getResource("fxml/updateModule.fxml"));
                 Stage window = (Stage)btnUpdate.getScene().getWindow();
                 window.setScene(new Scene(root, 1080,600));
                 window.setResizable(false);
@@ -175,7 +190,7 @@ public class AddCursusController implements Initializable {
 
             alert.showAndWait();
         }
-*/
+
     }
 
 

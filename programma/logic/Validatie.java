@@ -11,7 +11,7 @@ public class Validatie {
 
     public static boolean validatieUrl(String Url){
         boolean valid;
-        valid = Url.matches("https://(.*)");
+        valid = Url.matches("www.(.*)");
         return valid;
     }
 

@@ -22,6 +22,12 @@ public class Cursus {
         this.webcastTitel = webcastTitel;
     }
 
+    public Cursus( String cursusNaam, String niveau) {
+        this.volgnummer = 0;
+        this.cursusNaam = cursusNaam;
+        this.niveau = niveau;
+    }
+
     public String getModuleTitel() {
         return moduleTitel;
     }

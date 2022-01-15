@@ -7,66 +7,65 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import programma.DB.CursistRepo;
 import programma.DB.CursusRepo;
 import programma.DB.ModuleRepo;
 import programma.DB.WebcastRepo;
-import programma.domain.Cursist;
 import programma.domain.Cursus;
+import programma.domain.Module;
+import programma.logic.Validatie;
 
 import java.net.URL;
-import java.sql.Date;
 import java.text.ParseException;
 import java.util.ResourceBundle;
 
-public class UpdateCursusController implements Initializable {
+public class UpdateModuleController implements Initializable {
     NavbarController navbarController = new NavbarController();
-    CursusRepo cursusRepo = new CursusRepo();
-    WebcastRepo webcastRepo = new WebcastRepo();
     ModuleRepo moduleRepo = new ModuleRepo();
 
-    static int indexCursus = 0;
+
+    static int indexModule = 0;
+
 
     @FXML
     private Button btnTerug;
 
     @FXML
-    private TextField txtCursus;
+    private TextField txtTitel;
+
+    @FXML
+    private TextField txtEmail;
 
     @FXML
     private Button btnAdd;
 
     @FXML
-    private TextField txtOnderwerp;
+    private TextField txtVersie;
 
     @FXML
     private Label txtSucces;
 
     @FXML
-    private TextField txtIntroductie;
+    private TextField txtNaam;
 
     @FXML
-    private ChoiceBox<String> cbNiveau;
+    private TextField txtBeschrijving;
 
-    @FXML
-    private ChoiceBox<String> cbWebcast;
-
-    @FXML
-    private ChoiceBox<String> cbModule;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cbNiveau.setItems(FXCollections.observableArrayList("BEGINNER","GEVORDERD","EXPERT"));
-        cbWebcast.setItems(FXCollections.observableArrayList(webcastRepo.getTitels()));
-        cbModule.setItems(FXCollections.observableArrayList(moduleRepo.getTitels()));
 
-        txtCursus.setText(cursusRepo.getCursus(indexCursus).getCursusNaam());
-        txtIntroductie.setText(cursusRepo.getCursus(indexCursus).getIntroductieTekst());
-        txtOnderwerp.setText(cursusRepo.getCursus(indexCursus).getOnderwerp());
+        txtTitel.setText(moduleRepo.getModule(indexModule).getTitel());
+        txtEmail.setText(moduleRepo.getModule(indexModule).getContactEmail());
+        txtVersie.setText(moduleRepo.getModule(indexModule).getVersie());
+        txtBeschrijving.setText(moduleRepo.getModule(indexModule).getBeschrijving());
+        txtNaam.setText(moduleRepo.getModule(indexModule).getContactNaam());
 
 
 
@@ -74,47 +73,34 @@ public class UpdateCursusController implements Initializable {
     }
     @FXML
     void handleAddButton(ActionEvent event) throws ParseException {
-        if (txtCursus.getText().isEmpty()){
-            txtSucces.setText("Cursus veld is leeg");
+        if(!Validatie.validatieEmail(txtEmail.getText())){
+            txtSucces.setText("Email is onjuist");
             txtSucces.setTextFill(Color.RED);
             return;
         }
-        if (txtOnderwerp.getText().isEmpty()){
-            txtSucces.setText("Onderwerp veld is leeg");
-            txtSucces.setTextFill(Color.RED);
-            return;
-        }
-        if (txtIntroductie.getText().isEmpty()){
-            txtSucces.setText("Introductie veld is leeg");
-            txtSucces.setTextFill(Color.RED);
-            return;
-        }
-        if (txtOnderwerp.getText() != null && txtCursus.getText() != null && txtIntroductie.getText() != null && cbModule.getValue() !=null
-                && cbWebcast.getValue()!= null && cbNiveau.getValue() != null) {
+        if (!txtEmail.getText().isEmpty() && !txtNaam.getText().isEmpty()
+                && !txtBeschrijving.getText().isEmpty() && !txtTitel.getText().isEmpty() && !txtVersie.getText().isEmpty()) {
             try {
-                cursusRepo.update(indexCursus,new Cursus(txtCursus.getText(), txtOnderwerp.getText(), txtIntroductie.getText(), cbNiveau.getValue(),
-                        cbModule.getValue(),cbWebcast.getValue()));
-                txtSucces.setText("Cursus succesvol geupdate");
+                moduleRepo.update(indexModule,new Module(txtEmail.getText(), txtNaam.getText(),txtBeschrijving.getText(), txtVersie.getText(), txtTitel.getText()));
+                txtSucces.setText("Module succesvol\n geupdate");
                 txtSucces.setTextFill(Color.GREEN);
             }catch (Exception e){
-                txtSucces.setText("Cursus update mislukt");
+                txtSucces.setText("Module\n update mislukt");
                 txtSucces.setTextFill(Color.RED);
                 return;
             }
         }else {
-            txtSucces.setText("Cursus update mislukt");
+            txtSucces.setText("Module update \nmislukt");
             txtSucces.setTextFill(Color.RED);
         }
-
-
     }
 
     @FXML
     void handleTerug() throws Exception{
-        NavbarController.terug = 3;
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/navbar.fxml"));
+        NavbarController.terug = 4;
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/addCursus.fxml"));
         Stage window = (Stage)btnTerug.getScene().getWindow();
-        window.setScene(new Scene(root, 1370,600));
+        window.setScene(new Scene(root, 1080,600));
         window.setResizable(false);
 
     }

@@ -135,6 +135,6 @@ public class WebcastRepo {
     }
 
     public void delete(int id) {
-        ResultSet rs = DatabaseConnection.execute(String.format("DELETE FROM Webcasts WHERE ContentItemID = %d; SELECT * FROM Webcast;", id));
+        ResultSet rs = DatabaseConnection.execute(String.format("DELETE FROM Webcasts WHERE ContentItemID = %d; SELECT * FROM Webcasts;", id));
     }
 }

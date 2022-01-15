@@ -16,6 +16,7 @@ import programma.DB.CursistRepo;
 import programma.DB.WebcastRepo;
 import programma.domain.Cursist;
 import programma.domain.Webcast;
+import programma.logic.Validatie;
 
 import java.net.URL;
 import java.text.ParseException;
@@ -58,12 +59,25 @@ public class AddWebcastController implements Initializable {
 
 
     @FXML
-    void handleAddButton(ActionEvent event) throws ParseException {
+    void handleAddButton(ActionEvent event) throws ParseException {int beoordeling;
+        int tijdsduur;
+        try {
+            tijdsduur = Integer.parseInt(txtTijdsduur.getText());
+        }catch (Exception e){
+            txtSucces.setText("Tijdsduur is geen getal!");
+            txtSucces.setTextFill(Color.RED);
+            return;
+        }
 
+        if(!Validatie.validatieUrl(txtUrl.getText())){
+            txtSucces.setText("Url onjuist");
+            txtSucces.setTextFill(Color.RED);
+            return;
+        }
         if (txtOrganisatie.getText() != null && txtSpreker.getText() != null && txtTitel.getText() != null && txtTijdsduur.getText() !=null
             && txtUrl.getText() != null) {
             try {
-                webcastRepo.create(new Webcast(txtSpreker.getText(),txtOrganisatie.getText(),Integer.valueOf(txtTijdsduur.getText()), date,txtUrl.getText(),txtTitel.getText(),txtBeschrijving.getText()));
+                webcastRepo.create(new Webcast(txtSpreker.getText(),txtOrganisatie.getText(),tijdsduur, date,txtUrl.getText(),txtTitel.getText(),txtBeschrijving.getText()));
 
             }catch (Exception e){
                 txtSucces.setText("Webcast toevoegen mislukt");

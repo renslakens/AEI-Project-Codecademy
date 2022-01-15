@@ -110,7 +110,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnAddModule11" defaultButton="true" layoutX="940.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleUpdateBtn" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: purple;" textFill="WHITE">
+      <Button fx:id="btnUpdate" defaultButton="true" layoutX="940.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleUpdateBtn" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: purple;" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

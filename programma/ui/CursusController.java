@@ -11,9 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import programma.DB.CursusRepo;
-import programma.DB.WebcastRepo;
 import programma.domain.Cursus;
-import programma.domain.Webcast;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,11 +19,6 @@ import java.util.ResourceBundle;
 
 public class CursusController implements Initializable {
     CursusRepo cursusRepo = new CursusRepo();
-    Stage stage;
-
-
-    @FXML
-    private TableView<Webcast> webcastTopThreeTableView;
 
 
     @FXML
@@ -55,28 +48,26 @@ public class CursusController implements Initializable {
 
 
     @FXML
-    private TableColumn<Webcast, String > titelTopThreeColumn;
+    private TableView<Cursus> cursusTopThreeTableView;
 
     @FXML
-    private TableColumn<Webcast, String> sprekerTopThreeColumn;
+    private TableColumn<Cursus, String> cursusThreeColumn;
 
     @FXML
-    private TextField zoekCursist;
+    private TableColumn<Cursus, String> niveauTopThreeColumn;
     @FXML
     private Button btnCursus;
-    @FXML
-    private Button btnDelete;
     @FXML
     private Button btnUpdate;
 
     ObservableList<Cursus> cursusObservableList = FXCollections.observableArrayList();
-    ObservableList<Webcast> webcastsObservableListTop3 = FXCollections.observableArrayList();
+    ObservableList<Cursus> cursusObservableListTop3 = FXCollections.observableArrayList();
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
             cursusObservableList.addAll(cursusRepo.get());
-            //webcastsObservableListTop3.addAll(webcastRepo.getTop3());
+            cursusObservableListTop3.addAll(cursusRepo.getTop3());
             IDcolumn.setCellValueFactory(new PropertyValueFactory<>("volgnummer"));
             cursusColumn.setCellValueFactory(new PropertyValueFactory<>("cursusNaam"));
             introductieColumn.setCellValueFactory(new PropertyValueFactory<>("introductieTekst"));
@@ -88,9 +79,9 @@ public class CursusController implements Initializable {
 
             //Top 3
 
-       // titelTopThreeColumn.setCellValueFactory(new PropertyValueFactory<>("titel"));
-       // sprekerTopThreeColumn.setCellValueFactory(new PropertyValueFactory<>("sprekerNaam"));
-       // webcastTopThreeTableView.setItems(webcastsObservableListTop3);
+       cursusThreeColumn.setCellValueFactory(new PropertyValueFactory<>("cursusNaam"));
+       niveauTopThreeColumn.setCellValueFactory(new PropertyValueFactory<>("niveau"));
+       cursusTopThreeTableView.setItems(cursusObservableListTop3);
 
 
     }
@@ -123,7 +114,7 @@ public class CursusController implements Initializable {
     }
     @FXML
     void handleUpdateBtn() throws IOException {
-      /* int selectedID = webcastTableView.getSelectionModel().getSelectedIndex();
+      int selectedID = cursusTableView.getSelectionModel().getSelectedIndex();
 
         if(selectedID > -1) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Are you sure you want to update this?", ButtonType.YES, ButtonType.CANCEL);
@@ -131,9 +122,9 @@ public class CursusController implements Initializable {
             alert.showAndWait();
 
             if (alert.getResult() == ButtonType.YES) {
-                UpdateWebcastsController.indexCursist = IDcolumn.getCellData(selectedID);
+                UpdateCursusController.indexCursus = IDcolumn.getCellData(selectedID);
                 System.out.println(IDcolumn.getCellData(selectedID));
-                Parent root = FXMLLoader.load(getClass().getResource("fxml/updateWebcast.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("fxml/updateCursus.fxml"));
                 Stage window = (Stage)btnUpdate.getScene().getWindow();
                 window.setScene(new Scene(root, 1080,600));
                 window.setResizable(false);
@@ -143,6 +134,5 @@ public class CursusController implements Initializable {
 
             alert.showAndWait();
         }
-*/
     }
 }

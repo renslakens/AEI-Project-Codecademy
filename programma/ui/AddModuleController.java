@@ -53,21 +53,25 @@ public class AddModuleController implements Initializable {
 
     @FXML
     void handleAddButton(ActionEvent event) throws ParseException {
-
-        if (txtEmail.getText() != null && txtNaam.getText() != null
-            && txtBeschrijving.getText() != null && txtTitel.getText()!= null && txtVersie.getText() != null) {
+        if(!Validatie.validatieEmail(txtEmail.getText())){
+            txtSucces.setText("Email is onjuist");
+            txtSucces.setTextFill(Color.RED);
+            return;
+        }
+        if (!txtEmail.getText().isEmpty() && !txtNaam.getText().isEmpty()
+            && !txtBeschrijving.getText().isEmpty() && !txtTitel.getText().isEmpty() && !txtVersie.getText().isEmpty()) {
         try {
             moduleRepo.create(new Module(txtEmail.getText(), txtNaam.getText(),txtBeschrijving.getText(), txtVersie.getText(), txtTitel.getText()));
-            txtSucces.setText("Module succesvol toegevoegd");
+            txtSucces.setText("Module succesvol\n toegevoegd");
             txtSucces.setTextFill(Color.GREEN);
         }catch (Exception e){
-            txtSucces.setText("Moudle toevoegen mislukt");
+            txtSucces.setText("Module\n toevoegen mislukt");
             txtSucces.setTextFill(Color.RED);
             return;
         }
             clearForm();
         }else {
-            txtSucces.setText("Cursist toevoegen mislukt");
+            txtSucces.setText("Module toevoegen \nmislukt");
             txtSucces.setTextFill(Color.RED);
         }
 
@@ -80,7 +84,7 @@ public class AddModuleController implements Initializable {
     }
     @FXML
     void handleTerug() throws Exception{
-        NavbarController.terug = 3;
+        NavbarController.terug = 4;
         Parent root = FXMLLoader.load(getClass().getResource("fxml/addCursus.fxml"));
         Stage window = (Stage)btnTerug.getScene().getWindow();
         window.setScene(new Scene(root, 1370,600));
