@@ -5,6 +5,7 @@ import programma.domain.Cursist;
 import programma.domain.Module;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CertificaatRepo {
@@ -49,6 +50,36 @@ public class CertificaatRepo {
         }
         return certificaatList;
     }
+    public int getPercentageVrouw() {
+        ResultSet rs = DatabaseConnection
+                .execute("select (select count(*) from Certificate WHERE Beoordeling > 50 AND GeslachtCursist = 'Vrouw') * 100 / (select count(*) from Certificate) As Percentage from Certificate");
+
+        try {
+            if (rs.next()) {
+                int theCount = rs.getInt(1);
+                System.out.println(theCount);
+                return theCount;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return 0;
+    }
+    public int getPercentageMan() {
+        ResultSet rs = DatabaseConnection
+                .execute("select (select count(*) from Certificate WHERE Beoordeling > 50 AND GeslachtCursist = 'Man') * 100 / (select count(*) from Certificate) As Percentage from Certificate");
+
+        try {
+            if (rs.next()) {
+                int theCount = rs.getInt(1);
+                System.out.println(theCount);
+                return theCount;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return 0;
+    }
     public Certificaat getModule(int id) {
         ResultSet rs = DatabaseConnection
                 .execute(String.format("SELECT * FROM Certificate WHERE Certificate = %d",id));
@@ -72,7 +103,6 @@ public class CertificaatRepo {
         return certificaat;
     }
     public void update(int id, Certificaat params) {
-        //TODO
         int certificaatID = params.getCertificaatID();
         int beoordeling = params.getBeoordeling();
         String ondertekenaar = params.getOndertekenaar();

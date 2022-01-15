@@ -49,12 +49,22 @@ public class CertificatenController implements Initializable {
 
     @FXML
     private Button btnDelete;
+    @FXML
+    private ProgressIndicator percentageMan;
+
+    @FXML
+    private ProgressIndicator percentageVrouw;
 
     ObservableList<Certificaat> certificaatObservableList = FXCollections.observableArrayList();
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        double percentageManValue = (certificaatRepo.getPercentageMan()) /100.0;
+        double percentageVrouwValue = (certificaatRepo.getPercentageVrouw()) /100.0;
+
+        percentageMan.setProgress(percentageManValue);
+        percentageVrouw.setProgress(percentageVrouwValue);
         certificaatObservableList.addAll(certificaatRepo.get());
         IDcolumn.setCellValueFactory(new PropertyValueFactory<>("certificaatID"));
         beoordelingColumn.setCellValueFactory(new PropertyValueFactory<>("beoordeling"));
