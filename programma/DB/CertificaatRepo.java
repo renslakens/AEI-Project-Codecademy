@@ -57,7 +57,6 @@ public class CertificaatRepo {
         try {
             if (rs.next()) {
                 int theCount = rs.getInt(1);
-                System.out.println(theCount);
                 return theCount;
             }
         } catch (SQLException throwables) {
@@ -72,7 +71,6 @@ public class CertificaatRepo {
         try {
             if (rs.next()) {
                 int theCount = rs.getInt(1);
-                System.out.println(theCount);
                 return theCount;
             }
         } catch (SQLException throwables) {
