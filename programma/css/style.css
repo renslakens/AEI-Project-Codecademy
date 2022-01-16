@@ -191,7 +191,11 @@
      -fx-background-color: green;
 
 }
+#niet-geslaagd .text{
+    -fx-fill : white;
+     -fx-background-color: red;
 
+}
 #not-error .text{
     -fx-fill : black;
 }

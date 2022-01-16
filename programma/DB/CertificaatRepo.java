@@ -52,7 +52,7 @@ public class CertificaatRepo {
     }
     public int getPercentageVrouw() {
         ResultSet rs = DatabaseConnection
-                .execute("select (select count(*) from Certificate WHERE Beoordeling > 50 AND GeslachtCursist = 'Vrouw') * 100 / (select count(*) from Certificate) As Percentage from Certificate");
+                .execute("select (select count(*) from Certificate WHERE Beoordeling > 5 AND GeslachtCursist = 'Vrouw') * 100 / (select count(*) from Certificate) As Percentage from Certificate");
 
         try {
             if (rs.next()) {
@@ -66,7 +66,7 @@ public class CertificaatRepo {
     }
     public int getPercentageMan() {
         ResultSet rs = DatabaseConnection
-                .execute("select (select count(*) from Certificate WHERE Beoordeling > 50 AND GeslachtCursist = 'Man') * 100 / (select count(*) from Certificate) As Percentage from Certificate");
+                .execute("select (select count(*) from Certificate WHERE Beoordeling > 5 AND GeslachtCursist = 'Man') * 100 / (select count(*) from Certificate) As Percentage from Certificate");
 
         try {
             if (rs.next()) {
@@ -78,7 +78,7 @@ public class CertificaatRepo {
         }
         return 0;
     }
-    public Certificaat getModule(int id) {
+    public Certificaat getCertificaat(int id) {
         ResultSet rs = DatabaseConnection
                 .execute(String.format("SELECT * FROM Certificate WHERE Certificate = %d",id));
         Certificaat certificaat = new Certificaat(0,null,null,null,null);

@@ -80,8 +80,10 @@ public class CertificatenController implements Initializable {
                 super.updateItem(item, empty);
                 if (item == null) {
                     setStyle("");
-                } else if (item.getBeoordeling() > 50) {
+                } else if (item.getBeoordeling() > 5) {
                     this.setId("geslaagd");
+                } else if (item.getBeoordeling() > 1 && item.getBeoordeling() < 5) {
+                    this.setId("niet-geslaagd");
                 } else {
                     this.setId("not-error");
                 }

@@ -16,6 +16,7 @@ import programma.DB.CertificaatRepo;
 import programma.DB.WebcastRepo;
 import programma.domain.Certificaat;
 import programma.domain.Webcast;
+import programma.logic.Validatie;
 
 import java.net.URL;
 import java.sql.Date;
@@ -25,11 +26,15 @@ import java.util.ResourceBundle;
 public class AfrondController implements Initializable {
     NavbarController navbarController = new NavbarController();
     CertificaatRepo certificaatRepo = new CertificaatRepo();
+    Validatie validatie = new Validatie();
+
     static int indexCertificaat = 0;
     long millis=System.currentTimeMillis();
 
     @FXML
     private Button btnTerug;
+    @FXML
+    private Label lblAfrond;
 
     @FXML
     private TextField txtBeoordeling;
@@ -45,7 +50,6 @@ public class AfrondController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
     }
     @FXML
     void handleAddButton(ActionEvent event) throws ParseException {
@@ -57,6 +61,12 @@ public class AfrondController implements Initializable {
             txtSucces.setTextFill(Color.RED);
             return;
         }
+        if (!validatie.gradeValidator(beoordeling)){
+            txtSucces.setText("Beoordeling is tussen 1 - 10!");
+            txtSucces.setTextFill(Color.RED);
+            return;
+        }
+
         if (txtBeoordeling.getText() != null && txtOndertekenaar.getText() != null) {
             try {
                 certificaatRepo.update(indexCertificaat, new Certificaat(beoordeling,txtOndertekenaar.getText()));
