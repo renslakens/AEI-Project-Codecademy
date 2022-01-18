@@ -235,7 +235,7 @@ SET IDENTITY_INSERT [dbo].[Cursist] ON
 
 INSERT [dbo].[Cursist] ([CursistID], [CursistEmail], [Geboortedatum], [Geslacht], [Adres], [Stad], [Land], [postcode], [Naam]) VALUES (1, N'david.dierckx@hotmail.com', CAST(N'1999-01-01' AS Date), N'Man', N'Zwaluwlaan 299', N'Hoogstraten', N'Nederland', N'1234AB', N'David Dierckx')
 INSERT [dbo].[Cursist] ([CursistID], [CursistEmail], [Geboortedatum], [Geslacht], [Adres], [Stad], [Land], [postcode], [Naam]) VALUES (2, N'petra.booghaerts@hotmail.com', CAST(N'2002-01-01' AS Date), N'Vrouw', N'Hogeboom 12', N'Boom', N'Nederland', N'1234AB', N'Petra Booghaerts')
-INSERT [dbo].[Cursist] ([CursistID], [CursistEmail], [Geboortedatum], [Geslacht], [Adres], [Stad], [Land], [postcode], [Naam]) VALUES (3, N'junhao.chen@hotmail.com', CAST(N'2002-01-10' AS Date), N'Man', N'Chenstraat 23', N'Chen', N'Nederland', N'3334AB', N'Junhao Chen')
+INSERT [dbo].[Cursist] ([CursistID], [CursistEmail], [Geboortedatum], [Geslacht], [Adres], [Stad], [Land], [postcode], [Naam]) VALUES (3, N'junhao.chen@hotmail.com', CAST(N'2002-01-10' AS Date), N'Man', N'Fazantstraat 23', N'Chen', N'Nederland', N'3334AB', N'Junhao Chen')
 INSERT [dbo].[Cursist] ([CursistID], [CursistEmail], [Geboortedatum], [Geslacht], [Adres], [Stad], [Land], [postcode], [Naam]) VALUES (4, N'niek.goossen@hotmail.com', CAST(N'2002-03-19' AS Date), N'Man', N'Goosenlaan 45', N'Breda', N'Nederland', N'1234AB', N'Niek Goossens')
 INSERT [dbo].[Cursist] ([CursistID], [CursistEmail], [Geboortedatum], [Geslacht], [Adres], [Stad], [Land], [postcode], [Naam]) VALUES (5, N'rens.lakens@hotmail.com', CAST(N'2002-04-26' AS Date), N'Man', N'Lakenstraat 55', N'Rotterdam', N'Nederland', N'1234AB', N'Rens Lakens')
 SET IDENTITY_INSERT [dbo].[Cursist] OFF
