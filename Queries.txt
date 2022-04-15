@@ -12,7 +12,7 @@ SELECT (SELECT COUNT (*) FROM Certificate WHERE Beoordeling > 5 AND GeslachtCurs
 // Toont het aantal percentage van certificaten met een beoordeling van 6 of hoger van mannen. 
 SELECT (SELECT COUNT (*) FROM Certificate WHERE Beoordeling > 5 AND GeslachtCursist = 'Man') * 100 / (SELECT COUNT (*) FROM Certificate) As Percentage FROM Certificate;
 
-// Werkt de certificaat bij met de ingevoerde gegevens voor het aanmaken van een certificaat waar het certificaat ID hetzelfde is.
+// Werkt het certificaat bij met de ingevoerde gegevens voor het aanmaken van een certificaat waar het certificaat ID hetzelfde is.
 UPDATE Certificate SET Beoordeling = '%d', Ondertekenaar = '%s' WHERE CertificaatID = %d;
 
 // Voegt nieuwe een cursist toe.
