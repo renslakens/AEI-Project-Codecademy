@@ -1,3 +1,5 @@
+// De volgende SQL-query’s worden gebruikt in de applicatie. ‘%’ tekens gevolgd door een letter wordt in de Java implementatie gebruikt om invoer van gebruikers in de query’s te gebruiken. %d staat voor een getal “Decimaal” en %s staat voor een tekst “String”.  
+
 // Voegt een nieuwe certificaat toe.
 INSERT INTO Certificate (Beoordeling, Ondertekenaar, Cursist, Cursus, GeslachtCursist) VALUES ('%d', '%s','%s','%s','%s');
 
