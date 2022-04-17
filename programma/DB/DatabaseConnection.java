@@ -3,7 +3,7 @@ package programma.DB;
 import java.sql.*;
 
 public class DatabaseConnection {
-    static String connectionUrl = "jdbc:sqlserver://localhost;databaseName=CodecademyDB;integratedSecurity=true";
+    static String connectionUrl = "jdbc:sqlserver://localhost;databaseName=Codecademy;integratedSecurity=true";
 
     static Connection con = null;
 
