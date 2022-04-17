@@ -79,7 +79,7 @@ public class InschrijvingRepo {
 
         boolean rs = DatabaseConnection.executeQuery(String.format(
                 "UPDATE Cursist SET CursistEmail = '%s', Naam = '%s', Geboortedatum = '%s', Geslacht = '%s', Adres = '%s',Stad = '%s', Land = '%s', postcode = '%s' WHERE CursistID = %d;",
-                email,naam, geboortedatum, geslacht, adres, stad, land, postcode,id));
+                email,naam, geboortedatum, geslacht, adres, stad, land, postcode, id));
 
 
     }

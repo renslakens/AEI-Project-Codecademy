@@ -21,14 +21,14 @@ public class CertificaatRepo {
 
 
         boolean rs = DatabaseConnection.executeQuery(String.format(
-                "INSERT INTO Certificate(Beoordeling,Ondertekenaar, Cursist, Cursus,GeslachtCursist) VALUES ('%d', '%s','%s','%s','%s')",
+                "INSERT INTO Certificaat(Beoordeling,Ondertekenaar, Cursist, Cursus,GeslachtCursist) VALUES ('%d', '%s','%s','%s','%s')",
                 beoordeling,ondertekenaar, cursist, cursus, geslachtCursist));
 
     }
 
     public ArrayList<Certificaat> get() {
         ResultSet rs = DatabaseConnection
-                .execute("SELECT * FROM Certificate");
+                .execute("SELECT * FROM Certificaat");
         ArrayList<Certificaat> certificaatList = new ArrayList<>();
 
         try {
@@ -52,7 +52,7 @@ public class CertificaatRepo {
     }
     public int getPercentageVrouw() {
         ResultSet rs = DatabaseConnection
-                .execute("select (select count(*) from Certificate WHERE Beoordeling > 5 AND GeslachtCursist = 'Vrouw') * 100 / (select count(*) from Certificate) As Percentage from Certificate");
+                .execute("select (select count(*) from Certificaat WHERE Beoordeling > 5 AND GeslachtCursist = 'Vrouw') * 100 / (select count(*) from Certificaat) As Percentage from Certificaat");
 
         try {
             if (rs.next()) {
@@ -66,7 +66,7 @@ public class CertificaatRepo {
     }
     public int getPercentageMan() {
         ResultSet rs = DatabaseConnection
-                .execute("select (select count(*) from Certificate WHERE Beoordeling > 5 AND GeslachtCursist = 'Man') * 100 / (select count(*) from Certificate) As Percentage from Certificate");
+                .execute("select (select count(*) from Certificaat WHERE Beoordeling > 5 AND GeslachtCursist = 'Man') * 100 / (select count(*) from Certificaat) As Percentage from Certificaat");
 
         try {
             if (rs.next()) {
@@ -80,7 +80,7 @@ public class CertificaatRepo {
     }
     public Certificaat getCertificaat(int id) {
         ResultSet rs = DatabaseConnection
-                .execute(String.format("SELECT * FROM Certificate WHERE Certificate = %d",id));
+                .execute(String.format("SELECT * FROM Certificaat WHERE Certificaat = %d",id));
         Certificaat certificaat = new Certificaat(0,null,null,null,null);
 
         try {
@@ -109,7 +109,7 @@ public class CertificaatRepo {
         String geslachtCursist = params.getGeslachtCursist();
 
         boolean rs = DatabaseConnection.executeQuery(String.format(
-                "UPDATE Certificate SET Beoordeling = '%d', Ondertekenaar = '%s' WHERE CertificaatID = %d;",
+                "UPDATE Certificaat SET Beoordeling = '%d', Ondertekenaar = '%s' WHERE CertificaatID = %d;",
                 beoordeling,ondertekenaar,id));
 
     }
