@@ -184,3 +184,18 @@
 .linear-grad {
     -fx-background-color: linear-gradient(to bottom left, #A868A0, #2D75E8);
 }
+
+
+#geslaagd .text{
+    -fx-fill : white;
+     -fx-background-color: green;
+
+}
+#niet-geslaagd .text{
+    -fx-fill : white;
+     -fx-background-color: red;
+
+}
+#not-error .text{
+    -fx-fill : black;
+}

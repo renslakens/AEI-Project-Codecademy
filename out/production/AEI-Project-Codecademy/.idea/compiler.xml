@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="CompilerConfiguration">
+    <option name="USE_RELEASE_OPTION" value="false" />
+    <bytecodeTargetLevel target="15" />
+  </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="AEI-Project-Codecademy" options="--add-exports java.xml/com.sun.org.apache.xalan.internal.xsltc.compiler.util=AEI.Project.Codecademy" />
+      <module name="AEI-Project-Codecademy" options="--add-exports java.xml/com.sun.org.apache.xalan.internal.xsltc.compiler.util=AEI.Project.Codecademy --add-exports org.junit.jupiter.engine/org.junit=AEI.Project.Codecademy --add-exports org.junit.jupiter.engine/org.junit.jupiter.api.condition=AEI.Project.Codecademy" />
     </option>
   </component>
 </project>

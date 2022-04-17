@@ -9,17 +9,39 @@ public class Cursus {
     private String onderwerp;
     private String introductieTekst;
     private String niveau;
-    private ArrayList<Cursus> interestingCursus;
-
+    private String moduleTitel;
+    private String webcastTitel;
     // Constructor
-    public Cursus(int volgnummer, String cursusNaam, String onderwerp, String introductieTekst, String niveau,
-            ArrayList<Cursus> interestingCursus) {
-        this.volgnummer = volgnummer;
+    public Cursus(String cursusNaam, String onderwerp, String introductieTekst, String niveau, String moduleTitel, String webcastTitel) {
+        this.volgnummer = 0;
         this.cursusNaam = cursusNaam;
         this.onderwerp = onderwerp;
         this.introductieTekst = introductieTekst;
         this.niveau = niveau;
-        this.interestingCursus = new ArrayList<>();
+        this.moduleTitel = moduleTitel;
+        this.webcastTitel = webcastTitel;
+    }
+
+    public Cursus( String cursusNaam, String niveau) {
+        this.volgnummer = 0;
+        this.cursusNaam = cursusNaam;
+        this.niveau = niveau;
+    }
+
+    public String getModuleTitel() {
+        return moduleTitel;
+    }
+
+    public void setModuleTitel(String moduleTitel) {
+        this.moduleTitel = moduleTitel;
+    }
+
+    public String getWebcastTitel() {
+        return webcastTitel;
+    }
+
+    public void setWebcastTitel(String webcastTitel) {
+        this.webcastTitel = webcastTitel;
     }
 
     public int getVolgnummer() {
@@ -62,13 +84,8 @@ public class Cursus {
         this.niveau = niveau;
     }
 
-    public ArrayList<Cursus> getInterestingCursus() {
-        return interestingCursus;
-    }
 
-    public void setInterestingCursus(ArrayList<Cursus> interestingCursus) {
-        this.interestingCursus = interestingCursus;
-    }
+
 
     @Override
     public String toString() {
@@ -76,7 +93,6 @@ public class Cursus {
                 ", number='" + getVolgnummer() + "'" +
                 ", subject='" + getOnderwerp() + "'" +
                 ", level='" + getNiveau() + "'" +
-                ", introduction='" + getIntroductieTekst() + "'" +
-                ", interesting courses='" + getInterestingCursus() + "'";
+                ", introduction='" + getIntroductieTekst() + "'" ;
     }
 }

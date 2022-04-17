@@ -11,9 +11,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import programma.DB.CursistRepo;
 import programma.domain.Cursist;
+import programma.logic.Validatie;
 
 import java.net.URL;
 import java.sql.Date;
@@ -54,19 +56,53 @@ public class AddCursistenController implements Initializable {
     private Label txtSucces;
 
     @FXML
-    private Button btnAdd;
+    private Button handleAddModule;
 
     @FXML
     void handleAddButton(ActionEvent event) throws ParseException {
+        if(!Validatie.validatieEmail(txtEmail.getText())){
+            txtSucces.setText("Email is onjuist");
+            txtSucces.setTextFill(Color.RED);
+            return;
+        }
+        try {
+            if(!Validatie.validatieDatum(java.sql.Date.valueOf(dtGeboortedatum.getValue()))){
+                txtSucces.setText("Geboortedatum is\n onjuist");
+                txtSucces.setTextFill(Color.RED);
+                return;
+            }
+        }catch (Exception e){
+            txtSucces.setText("Selecteer een\n geboortedatum");
+            txtSucces.setTextFill(Color.RED);
+            return;
+        }
+
+
+        if(!Validatie.validatiePostcode(txtPostcode.getText())){
+            txtSucces.setText("Postcode is onjuist");
+            txtSucces.setTextFill(Color.RED);
+            return;
+        }
 
         if (txtEmail.getText() != null && txtNaam.getText() != null && dtGeboortedatum.getValue() != null && comboGeslacht.getValue() !=null
             && txtAdres.getText() != null && txtStad.getText()!= null && txtLand.getText() != null && txtPostcode.getText() != null) {
-
+        try {
             cursistRepo.create(new Cursist(txtEmail.getText(), txtNaam.getText(), java.sql.Date.valueOf(dtGeboortedatum.getValue()), comboGeslacht.getValue(),
                     txtAdres.getText(), txtStad.getText(), txtLand.getText(), txtPostcode.getText()));
-            clearForm();
+            txtSucces.setText("Cursist succesvol toegevoegd");
+            txtSucces.setTextFill(Color.GREEN);
+        }catch (Exception e){
+            txtSucces.setText("Cursist toevoegen mislukt");
+            txtSucces.setTextFill(Color.RED);
+            return;
         }
-        txtSucces.setText("Cursist succesvol toegevoegd");
+            clearForm();
+        }else {
+            txtSucces.setText("Cursist toevoegen mislukt");
+            txtSucces.setTextFill(Color.RED);
+        }
+
+
     }
 
     void clearForm(){

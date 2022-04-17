@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -11,7 +10,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programma.ui.CursistenController">
@@ -77,32 +75,14 @@
                </font></Button>
         </buttons>
       </ButtonBar>
-      <ProgressIndicator layoutX="799.0" layoutY="155.0" prefHeight="61.0" prefWidth="85.0" progress="0.37" scaleX="2.0" scaleY="2.0">
-         <effect>
-            <ColorAdjust brightness="0.45" contrast="0.07" hue="0.05" />
-         </effect>
-      </ProgressIndicator>
-      <ProgressIndicator layoutX="950.0" layoutY="155.0" prefHeight="61.0" prefWidth="85.0" progress="0.37" scaleX="2.0" scaleY="2.0">
-         <effect>
-            <ColorAdjust brightness="0.45" contrast="0.07" hue="0.57" />
-         </effect>
-      </ProgressIndicator>
-      <Line endX="892.5" endY="237.0" startX="892.5000610351562" startY="74.0" stroke="WHITE" />
-      <Line endX="892.2059936523438" endY="446.869140625" layoutX="-9.0" layoutY="-231.0" rotate="90.0" startX="891.3709716796875" startY="160.1665496826172" stroke="WHITE" />
-      <Label layoutX="790.0" layoutY="74.0" text="M" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="48.0" />
-         </font>
-      </Label>
-      <Label layoutX="948.0" layoutY="73.0" text="V" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="48.0" />
-         </font>
-      </Label>
-      <Label layoutX="796.0" layoutY="29.0" text="Slaag Percentage" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
+      <Pane layoutY="71.0" prefHeight="60.0" prefWidth="331.0" style="-fx-background-color: #68479F;">
+         <children>
+            <Label layoutX="68.0" layoutY="12.0" text="Cursisten Pagina" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </Pane>

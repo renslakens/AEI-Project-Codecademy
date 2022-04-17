@@ -41,7 +41,32 @@ public class NavbarController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else {
+        }else if (terug == 2){
+            try {
+                btnWebcasts();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(terug == 3){
+            try {
+                btnCursussen();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(terug == 4){
+            try {
+                btnCertificaten();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(terug == 5){
+            try {
+                btnInschrijvingen();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
             try {
                 btnHome();
             } catch (IOException e) {
@@ -51,8 +76,14 @@ public class NavbarController implements Initializable {
 
     }
     @FXML
-    void btnCertificaten(ActionEvent event) {
-
+    void btnCertificaten() throws IOException {
+        Pane view = FXMLLoader.load(getClass().getResource("fxml/certificaten.fxml"));
+        borderpane.setCenter((view));
+    }
+    @FXML
+    void btnInschrijvingen() throws IOException {
+        Pane view = FXMLLoader.load(getClass().getResource("fxml/inschrijvingen.fxml"));
+        borderpane.setCenter((view));
     }
 
     @FXML
@@ -62,8 +93,9 @@ public class NavbarController implements Initializable {
     }
 
     @FXML
-    void btnCursussen(ActionEvent event) {
-
+    void btnCursussen() throws IOException{
+        Pane view = FXMLLoader.load(getClass().getResource("fxml/cursussen.fxml"));
+        borderpane.setCenter((view));
     }
 
     @FXML
@@ -73,8 +105,9 @@ public class NavbarController implements Initializable {
     }
 
     @FXML
-    void btnWebcasts(ActionEvent event) {
-
+    void btnWebcasts() throws IOException {
+        Pane view = FXMLLoader.load(getClass().getResource("fxml/webcasts.fxml"));
+        borderpane.setCenter((view));
     }
 
 }
